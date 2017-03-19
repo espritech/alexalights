@@ -52,46 +52,6 @@ app.sessionEnded(function(request, response) {
   console.log("Session ended");
 });
 
-app.intent("RobotDialogIntent", {
-    "slots": { "DIRECTION": "LITERAL" },
-    "utterances": [
-      "move {directions|DIRECTION}",
-      "move to {directions|DIRECTION}",
-      "go {directions|DIRECTION}",
-      "go to {directions|DIRECTION}"
-    ]
-  },
-  function(request, response) {
-    response.shouldEndSession(false);
-    var direction = request.slot("DIRECTION");
-    var directionCode = directionToCode(direction);
-    var canonicalDirection = directionsCodes[directionCode][0];
-    var message = new gcm.Message({
-        data: { code: directionCode }
-    });
-    sender.send(message, { registrationTokens: registrationTokens }, function (err, data) {
-        if (err) {
-          console.error(err);
-          response.say("Sorry, there was an unexpected error. Could not send message to robot.");
-        } else {
-          console.log(data);
-          if (request.hasSession()) {
-            var session = request.getSession();
-            var counter = session.get(canonicalDirection);
-            if (counter == null) {
-              counter = 1;
-            } else {
-              counter = parseInt(counter) + 1;
-            }
-            session.set(canonicalDirection, counter.toString());
-          }
-          response.say("Moving the robot to " + canonicalDirection);
-        }
-        response.send();
-    });
-    return false;
-  }
-);
 
 app.intent("RobotLightsIntent", {
     "utterances": [
