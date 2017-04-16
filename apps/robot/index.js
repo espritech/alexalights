@@ -55,8 +55,8 @@ app.sessionEnded(function(request, response) {
 
 app.intent("RobotLightsIntent", {
     "utterances": [
-    "{toggle|switch|} lights"
-     // "red on",
+   // "{toggle|switch|} lights"
+     "red on",
     ]
   },
   function(request, response)
@@ -73,8 +73,8 @@ app.intent("RobotLightsIntent", {
                 //  } 
        //   else 
          // {
-          console.log(data);
-          response.say("Turning red light on");
+        //  console.log(data);
+          response.say("Turning red L E D light on");
            //}
             //response.send();
       // });
