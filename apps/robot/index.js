@@ -55,27 +55,29 @@ app.sessionEnded(function(request, response) {
 
 app.intent("RobotLightsIntent", {
     "utterances": [
-     "{toggle|switch|} lights"
-   //   "red on",
+   //  "{toggle|switch|} lights"
+      "red on",
     ]
   },
-  function(request, response) {
-    response.shouldEndSession(false);
-   // var message = new gcm.Message({
-     //   data: { code: lightsCode }
-   // });
-   // sender.send(message, { registrationTokens: registrationTokens }, function (err, data) {
+  function(request, response)
+           {
+            response.shouldEndSession(false);
+          // var message = new gcm.Message({
+           //   data: { code: lightsCode }
+                                       // });
+   // sender.send(message, { registrationTokens: registrationTokens }, function (err, data)
+     //    {
     //    if (err) {
       //    console.error(err);
       //    response.say("Sorry, there was an unexpected error. Could not send message to robot.");
-      //  } 
+                //  } 
        //   else 
          // {
           console.log(data);
           response.say("Turning red L E D on");
-        //}
-        //response.send();
-   // });
+           //}
+            //response.send();
+      // });
   //  return false;
   }
 );
