@@ -55,8 +55,8 @@ app.sessionEnded(function(request, response) {
 
 app.intent("RobotLightsIntent", {
     "utterances": [
-   //  "{toggle|switch|} lights"
-      "red on",
+    "{toggle|switch|} lights"
+     // "red on",
     ]
   },
   function(request, response)
@@ -87,25 +87,33 @@ app.intent("RobotStatsIntent", {
       "{tell|give|say} {me|} stats",
     ]
   },
-  function(request, response) {
-    response.shouldEndSession(false);
-    if (request.hasSession()) {
-      var session = request.getSession();
-      console.log(session.details.attributes);
-      var stats = "";
-      for (var key in session.details.attributes) {
-        var counter = session.get(key);
-        stats += ", " + key + " " + counter;
-      }
-      if (stats.length > 0) {
-        response.say("The stats are " + stats);
-      } else {
-        response.say("No moves, yet");
-      }
-    } else {
-      response.say("Sorry, session is not active, no stats are available");
-    }
-  }
+  function(request, response) 
+           {
+            response.shouldEndSession(false);
+            if (request.hasSession()) 
+               {
+                 var session = request.getSession();
+                  console.log(session.details.attributes);
+                  var stats = "";
+                  for (var key in session.details.attributes) 
+                    {
+                      var counter = session.get(key);
+                      stats += ", " + key + " " + counter;
+                    }
+                 if (stats.length > 0) 
+                   {
+                    response.say("The stats are " + stats);
+                   } 
+                 else 
+                   {
+                     response.say("No moves, yet");
+                   }
+               }       
+               else 
+                  {
+                   response.say("Sorry, session is not active, no stats are available");
+                   }
+         }
 );
 
 app.intent("RobotStopIntent", {
