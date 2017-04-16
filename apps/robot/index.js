@@ -74,7 +74,7 @@ app.intent("RobotLightsIntent", {
        //   else 
          // {
           console.log(data);
-          response.say("Turning red L E D on");
+          response.say("Turning red light on");
            //}
             //response.send();
       // });
