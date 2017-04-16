@@ -56,7 +56,7 @@ app.sessionEnded(function(request, response) {
 app.intent("RobotLightsIntent", {
     "utterances": [
      // "{toggle|switch|} lights"
-      "red on"
+      "red on",
     ]
   },
   function(request, response) {
