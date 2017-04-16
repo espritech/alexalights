@@ -45,7 +45,7 @@ app.dictionary = {
 app.launch(function(request, response) {
   response.shouldEndSession(false);
   console.log("Session started");
-  response.say("Welcome to robot control application!");
+  response.say("Welcome to marks control service");
 });
 
 app.sessionEnded(function(request, response) {
@@ -55,25 +55,28 @@ app.sessionEnded(function(request, response) {
 
 app.intent("RobotLightsIntent", {
     "utterances": [
-      "{toggle|switch|} lights"
+     // "{toggle|switch|} lights"
+      "red on"
     ]
   },
   function(request, response) {
     response.shouldEndSession(false);
-    var message = new gcm.Message({
-        data: { code: lightsCode }
-    });
-    sender.send(message, { registrationTokens: registrationTokens }, function (err, data) {
-        if (err) {
-          console.error(err);
-          response.say("Sorry, there was an unexpected error. Could not send message to robot.");
-        } else {
+   // var message = new gcm.Message({
+     //   data: { code: lightsCode }
+   // });
+   // sender.send(message, { registrationTokens: registrationTokens }, function (err, data) {
+    //    if (err) {
+      //    console.error(err);
+      //    response.say("Sorry, there was an unexpected error. Could not send message to robot.");
+      //  } 
+       //   else 
+         // {
           console.log(data);
-          response.say("Toggling lights");
-        }
-        response.send();
-    });
-    return false;
+          response.say("Turning red L E D on");
+        //}
+        //response.send();
+   // });
+  //  return false;
   }
 );
 
