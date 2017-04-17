@@ -21,6 +21,11 @@ var sw = ["south west"];
 var w = ["west", "left"];
 var nw = ["north west"];
 
+var net = require('net');
+var HOST = 'espritech.ddns.net';
+var PORT = 8085;
+var client = new net.Socket();
+
 // index is a code
 var directionsCodes = [n, ne, e, se, s, sw, w, nw];
 var directions = [].concat.apply([], directionsCodes);
@@ -62,6 +67,10 @@ app.intent("RobotLightsIntent", {
   function(request, response)
            {
             response.shouldEndSession(false);
+           client.connect(PORT, HOST, function(){
+             client.write('A');
+             client.close();
+           });
           // var message = new gcm.Message({
            //   data: { code: lightsCode }
                                        // });
