@@ -59,6 +59,9 @@ app.sessionEnded(function(request, response) {
 
 
 app.intent("RobotLightsIntent", {
+       "slots" : {
+         "LEDCOLORS" : "LCOLOR"
+       },
     "utterances": [
    // "{toggle|switch|} lights"
      "red on",
