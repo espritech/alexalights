@@ -64,7 +64,7 @@ app.intent("RobotLightsIntent", {
        },
     "utterances": [
    // "{toggle|switch|} lights"
-     "toggle {-|LCOLOR}"
+     "toggle {-|LEDCOLORS}"
     ]
   },
   function(request, response)
@@ -87,7 +87,7 @@ app.intent("RobotLightsIntent", {
          // {
         //  console.log(data);
    var number = request.slot("LCOLOR");
-    response.say("request received  for L E D" + LCOLOR);
+    response.say("request received  for L E D" + LEDCOLORS);
        //   response.say("Turning red L E D light on");
            //}
             //response.send();
