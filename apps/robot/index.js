@@ -86,8 +86,8 @@ app.intent("RobotLightsIntent", {
        //   else 
          // {
         //  console.log(data);
-   var number = request.slot("LCOLOR");
-    response.say("request received  for L E D" + LEDCOLORS);
+   var color = request.slot("LEDCOLORS");
+    response.say("request received  for L E D" + color);
        //   response.say("Turning red L E D light on");
            //}
             //response.send();
